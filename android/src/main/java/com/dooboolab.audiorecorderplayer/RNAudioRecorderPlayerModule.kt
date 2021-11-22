@@ -2,7 +2,7 @@ package com.dooboolab.audiorecorderplayer
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.content.Context;
+import android.content.Context
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
