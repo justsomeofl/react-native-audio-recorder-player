@@ -30,7 +30,7 @@ class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationCont
     private var mTimer: Timer? = null
     private var pausedRecordTime = 0L
     private var totalPausedRecordTime = 0L
-    private var audioManager : AudioManager = reactContext.getSystemService(Context.AUDIO_SERVICE)
+    private var audioManager : AudioManager? = reactContext.getSystemService(Context.AUDIO_SERVICE)
     var recordHandler: Handler? = Handler(Looper.getMainLooper())
     override fun getName(): String {
         return tag
