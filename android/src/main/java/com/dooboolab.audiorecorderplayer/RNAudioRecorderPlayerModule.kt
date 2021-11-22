@@ -11,6 +11,7 @@ import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
 import androidx.core.app.ActivityCompat
+import android.media.audiomanager
 import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter
 import com.facebook.react.modules.core.PermissionListener
@@ -29,6 +30,7 @@ class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationCont
     private var mTimer: Timer? = null
     private var pausedRecordTime = 0L
     private var totalPausedRecordTime = 0L
+    private var audioManager : AudioManager = reactContext.getSystemService(Context.AUDIO_SERVICE)
     var recordHandler: Handler? = Handler(Looper.getMainLooper())
     override fun getName(): String {
         return tag
@@ -54,6 +56,12 @@ class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationCont
         audioFileURL = if (((path == "DEFAULT"))) "${reactContext.cacheDir}/$defaultFileName" else path
         _meteringEnabled = meteringEnabled
 
+        audioManager.setBluetoothScoOn(true)
+        audioManager.startBluetoothSco()
+
+        audioManager.setSpeakerphoneOn(false)
+        audioManager.setMode(audioManager.MODE_NORMAL)
+        
         if (mediaRecorder == null) {
             mediaRecorder = MediaRecorder()
         }
