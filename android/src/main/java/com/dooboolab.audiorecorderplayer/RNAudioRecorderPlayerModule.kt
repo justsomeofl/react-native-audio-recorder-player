@@ -57,11 +57,11 @@ class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationCont
         audioFileURL = if (((path == "DEFAULT"))) "${reactContext.cacheDir}/$defaultFileName" else path
         _meteringEnabled = meteringEnabled
 
-        audioManager.setBluetoothScoOn(true)
-        audioManager.startBluetoothSco()
+        audioManager!!.setBluetoothScoOn(true)
+        audioManager!!.startBluetoothSco()
 
-        audioManager.setSpeakerphoneOn(false)
-        audioManager.setMode(AudioManager.MODE_NORMAL)
+        audioManager!!.setSpeakerphoneOn(false)
+        audioManager!!.setMode(AudioManager.MODE_NORMAL)
         
         if (mediaRecorder == null) {
             mediaRecorder = MediaRecorder()
