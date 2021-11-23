@@ -61,7 +61,7 @@ class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationCont
         audioManager.startBluetoothSco()
 
         audioManager.setSpeakerphoneOn(false)
-        audioManager.setMode(audioManager.MODE_NORMAL)
+        audioManager.setMode(AudioManager.MODE_NORMAL)
         
         if (mediaRecorder == null) {
             mediaRecorder = MediaRecorder()
